@@ -7,7 +7,13 @@ public class FlightManager {
 	}
 
 	public Flight findFlight(String flightNo) {
-		return null; // TODO: Implement
+		// TODO: Implement
+		for (Flight flight : flights){
+			if (flight.getFlightNo().equals(flightNo)) {
+				return flight;
+			}
+		}
+		return null;
 	}
 
 }
