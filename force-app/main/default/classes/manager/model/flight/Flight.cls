@@ -33,11 +33,19 @@ public class Flight {
 
 	public Seat reserveSeat(Grade grade) {
 		Section section = null; // TODO: Implement
+		if (countAvailableSeats(grade) > 0) {
+			section = sectionMap.get(grade);
+			if (section == null) {
+				throw new NoSeatAvailableException('No seat available for grade ' + grade);
+			}
+		} else {
+			throw new NoSeatAvailableException('No seat available for grade ' + grade);
+		}
 		return section.reserveSeat();
 	}
 
 	public Long countAvailableSeats(Grade grade) {
-		return sectionMap.get(grade).countAvailableSeats();
+		return sectionMap.get(grade)?.countAvailableSeats();
 	}
 
 }
